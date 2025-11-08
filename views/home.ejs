@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%-include("partials/head.ejs") %>
+</head>
+
+<body>
+    <h1 class="bg-primary text-width p-4">Welcome to the Quote Finder!</h1>
+
+    <form action="/searchByKeyword">
+        <label>Keyword: <input type="text" name="keyword"></label>
+        <button class="btn btn-success">Search</button>
+    </form>
+
+    <br><hr><br>
+
+    <form action="/searchByAuthor">    
+        Author:
+        <select name="authorId">            
+            <% for (let row of rows) { %>
+                <option value="<%= row.authorId %>"><%= row.firstName %> <%= row.lastName %></option>
+            <% } %>
+        </select>
+        <button class="btn btn-success">Search</button>
+    </form>
+
+    <br><hr><br>
+
+    <div>(Options: Inspirational, Motivational, Life, Wisdom, Freedom, Moral)</div>
+    <form action="/searchByCategory">
+        <label>Category: <input type="text" name="category"></label>
+        <button class="btn btn-success">Search</button>
+    </form>
+
+    <br><hr><br>
+
+    <form action="/searchByLikes">    
+        Likes range:
+        <label>Min Likes: <input type="number" name="minLikes"></label>
+        <label>Max Likes: <input type="number" name="maxLikes"></label>
+        <button class="btn btn-success">Search</button>
+    </form>
+
+    <%- include("partials/footer.ejs") %>
+
+</body>
+
+</html>
